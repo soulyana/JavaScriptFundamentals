@@ -18,3 +18,9 @@ let intervalId = setInterval( function() {
 
 //if need to cancel
 clearInterval(intervalId);
+
+//The location object
+//Properties: href, hostname, port, pathname, search
+//Methods: assign(), reload()
+//access on window, the global obj
+console.log(location.href);
