@@ -53,3 +53,51 @@ element.setAttribute('foo', 'fooValue');
 element.classList.add('p2');
 element.style.color = 'red';
 console.log(element);
+
+//Promises and Error Handling
+//Error handling using try and catch
+try {
+    let car = newCar;
+} catch(error) {
+    console.log('error: ', error);
+}
+console.log('continuing...');
+
+//finally - execute some code regardless of an error being thrown
+try {
+    let car = null;
+} catch(error) {
+    console.log('error: ', error);
+} finally {
+    console.log('this always executes');
+}
+
+//Developer defined errors
+try {
+    // code here... 
+    throw new Error('my custom error');
+} catch(error) {
+    console.log('error: ', error);
+} finally {
+    console.log('this always executes');
+}
+
+//Promises - designed to work with asynchournous javascript; temp holder for a value that will get back to you
+//create a promise
+// let promise = new Promise(
+//     function(resolve, reject) {
+//         setTimeout(reject, 100, 'someValue');
+//     }
+// );
+// console.log(promise);
+
+//Settling a promise
+let promise = new Promise(
+    function(resolve, reject) {
+        setTimeout(resolve, 100, 'someValue');
+    }
+);
+promise.then(
+    value => console.log('fulfilled: ' + value),
+    error => console.log('rejected: ' + error)
+);
