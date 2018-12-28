@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import { Car } from './models/car';
+import $ from 'jquery';
 
 let car = new Car(123);
 console.log(car.id);
@@ -100,4 +101,22 @@ let promise = new Promise(
 promise.then(
     value => console.log('fulfilled: ' + value),
     error => console.log('rejected: ' + error)
+);
+
+//Data Access Using HTTP 
+//HTTP Requests Using jQuery
+let promise1 = $.get("http://myid.mockapi.io/api/v1/users");
+promise1.then(
+    data => console.log('success: ', data),
+    error => console.log('error: ', error)
+);
+//HTTP POST using jQuery
+let user = {
+    name: 'Mark Zamoyta',
+    avatar: 'mark.jpg'
+};
+let promise2 = $.post("http://myid.mockapi.io/api/v1/users", user);
+promise2.then(
+    data => console.log('data: ', data),
+    error => console.log('error: ', error)
 );
