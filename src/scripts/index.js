@@ -1,20 +1,20 @@
-import '../styles/index.scss';
-import { Car } from './models/car';
-import $ from 'jquery';
+import "../styles/index.scss";
+import { Car } from "./models/car";
+import $ from "jquery";
 
 let car = new Car(123);
 console.log(car.id);
 
-//Timers - fire off aysnchorously 
+//Timers - fire off aysnchorously
 //setTimeout() executes a function one time in the future
 
-let timeoutId = setTimeout( function() {
-    console.log('1 second passed');
+let timeoutId = setTimeout(function() {
+  console.log("1 second passed");
 }, 1000);
-//setInterval() fires repeatedly 
+//setInterval() fires repeatedly
 
-let intervalId = setInterval( function() {
-    console.log('1 second passed');
+let intervalId = setInterval(function() {
+  console.log("1 second passed");
 }, 1000);
 
 //if need to cancel
@@ -30,14 +30,14 @@ console.log(location.href);
 //Properties: body, forms, links
 //Methods: createElement(), createEvent(), getElementById(), getElemenetsByClassName()
 //Events: onload, onclick, onkeypress
-//Select DOM elements 
-document.getElementById('elementId');
-document.getElementsByClassName('className');
-document.getElementsByTagName('tagName');
+//Select DOM elements
+document.getElementById("elementId");
+document.getElementsByClassName("className");
+document.getElementsByTagName("tagName");
 
-let el = document.getElementById('first');
-let els = document.getElementsByClassName('p1');
-let els1 = document.getElementsByTagName('p');
+let el = document.getElementById("first");
+let els = document.getElementsByClassName("p1");
+let els1 = document.getElementsByTagName("p");
 
 console.log(els1);
 
@@ -48,39 +48,39 @@ console.log(els1);
 // element.classList.add('myClassName');
 // element.style.color = 'blue';
 
-let element = document.getElementById('first');
-element.textContent = 'New Content...';
-element.setAttribute('foo', 'fooValue');
-element.classList.add('p2');
-element.style.color = 'red';
+let element = document.getElementById("first");
+element.textContent = "New Content...";
+element.setAttribute("foo", "fooValue");
+element.classList.add("p2");
+element.style.color = "red";
 console.log(element);
 
 //Promises and Error Handling
 //Error handling using try and catch
 try {
-    let car = newCar;
-} catch(error) {
-    console.log('error: ', error);
+  let car = newCar;
+} catch (error) {
+  console.log("error: ", error);
 }
-console.log('continuing...');
+console.log("continuing...");
 
 //finally - execute some code regardless of an error being thrown
 try {
-    let car = null;
-} catch(error) {
-    console.log('error: ', error);
+  let car = null;
+} catch (error) {
+  console.log("error: ", error);
 } finally {
-    console.log('this always executes');
+  console.log("this always executes");
 }
 
 //Developer defined errors
 try {
-    // code here... 
-    throw new Error('my custom error');
-} catch(error) {
-    console.log('error: ', error);
+  // code here...
+  throw new Error("my custom error");
+} catch (error) {
+  console.log("error: ", error);
 } finally {
-    console.log('this always executes');
+  console.log("this always executes");
 }
 
 //Promises - designed to work with asynchournous javascript; temp holder for a value that will get back to you
@@ -103,7 +103,7 @@ try {
 //     error => console.log('rejected: ' + error)
 // );
 
-// //Data Access Using HTTP 
+// //Data Access Using HTTP
 // //HTTP Requests Using jQuery
 // let promise1 = $.get("http://myid.mockapi.io/api/v1/users");
 // promise1.then(
@@ -124,14 +124,21 @@ try {
 //FORMS
 //Preventing Form Submission
 //The submit event
-let form = document.getElementById('user-form');
+let form = document.getElementById("user-form");
 
-form.addEventListener('submit', event => {
-    let user = form.elements['user'];
-    let avatarFile = form.elements['avatar-file'];
+form.addEventListener("submit", event => {
+  let user = form.elements["user"];
+  let avatarFile = form.elements["avatar-file"];
+  let userError = document.getElementById("user-error");
+
+  if (user.value.length < 4) {
+    userError.textContent = "Invalid Entry";
+    userError.style.color = "red";
+    user.style.borderColor = "red";
+    user.focus(); //to give focus to error field
 
     console.log(user.value, avatarFile.value);
     //prevent the browser from submitting the form
     event.preventDefault();
+  }
 });
-
