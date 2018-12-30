@@ -124,21 +124,46 @@ try {
 //FORMS
 //Preventing Form Submission
 //The submit event
-let form = document.getElementById("user-form");
+// let form = document.getElementById("user-form");
 
-form.addEventListener("submit", event => {
-  let user = form.elements["user"];
-  let avatarFile = form.elements["avatar-file"];
-  let userError = document.getElementById("user-error");
+// form.addEventListener("submit", event => {
+//   let user = form.elements["user"];
+//   let avatarFile = form.elements["avatar-file"];
+//   let userError = document.getElementById("user-error");
 
-  if (user.value.length < 4) {
-    userError.textContent = "Invalid Entry";
-    userError.style.color = "red";
-    user.style.borderColor = "red";
-    user.focus(); //to give focus to error field
+//   if (user.value.length < 4) {
+//     userError.textContent = "Invalid Entry";
+//     userError.style.color = "red";
+//     user.style.borderColor = "red";
+//     user.focus(); //to give focus to error field
 
-    console.log(user.value, avatarFile.value);
-    //prevent the browser from submitting the form
+//     console.log(user.value, avatarFile.value);
+//     //prevent the browser from submitting the form
+//     event.preventDefault();
+//   }
+// });
+
+//Posting from Javascript
+let form = document.getElementById('user-form');
+
+form.addEventListener('submit', event => {
+
+    let user = form.elements['user'];
+    let avatarFile = form.elements['avatar-file'];
+
+    let posting = {
+        user: user.value,
+        avatarFile: avatarFile.value
+    };
+
+    let promise = $.post(
+        "http://5b32a4fd82407e001413f1df.mocapi.io/api/v1/users", posting
+    );
+    promise.then(
+        data => console.log('succes: ', data),
+        error => console.log('error: ', error)
+    );
+
     event.preventDefault();
-  }
+
 });
