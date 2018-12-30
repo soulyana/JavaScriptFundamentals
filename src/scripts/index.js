@@ -167,3 +167,7 @@ form.addEventListener('submit', event => {
     event.preventDefault();
 
 });
+
+//Building your application for production
+//command line npm run build
+//get file to upload to webserver in dist folder (here it is build)
